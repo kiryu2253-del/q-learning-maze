@@ -9,7 +9,7 @@ Sub QTable()
 
     Range("A1:M11").Clear
 
-    Cells(1, 1).Value = "i\j"
+    Cells(1, 1).Value = "i / j"
 
     For j = 1 To 10
         Cells(1, j + 1).Value = j
@@ -47,7 +47,13 @@ Sub QTable()
         Cells(i + 1, 12).Value = max
         Cells(i + 1, 13).Value = j_max
 
-        Cells(i + 1, j_max + 1).Interior.Color = vbYellow
+        For j = 1 To 10
+
+            If Cells(i + 1, j + 1).Value = max Then
+                Cells(i + 1, j + 1).Interior.Color = vbYellow
+            End If
+
+        Next j
 
     Next i
 
