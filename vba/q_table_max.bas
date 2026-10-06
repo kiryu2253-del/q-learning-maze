@@ -7,12 +7,25 @@ Sub QTable()
 
     Randomize
 
-    Range("A1:J10").Interior.ColorIndex = xlNone
+    Range("A1:M11").Clear
+
+    Cells(1, 1).Value = "i\j"
+
+    For j = 1 To 10
+        Cells(1, j + 1).Value = j
+    Next j
+
+    For i = 1 To 10
+        Cells(i + 1, 1).Value = i
+    Next i
+
+    Cells(1, 12).Value = "max"
+    Cells(1, 13).Value = "j_max"
 
     For i = 1 To 10
 
         For j = 1 To 10
-            Cells(i, j).Value = Int(Rnd * 10) + 1
+            Cells(i + 1, j + 1).Value = Int(Rnd * 10) + 1
         Next j
 
     Next i
@@ -24,18 +37,20 @@ Sub QTable()
 
         For j = 1 To 10
 
-            If Cells(i, j).Value > max Then
-                max = Cells(i, j).Value
+            If Cells(i + 1, j + 1).Value > max Then
+                max = Cells(i + 1, j + 1).Value
                 j_max = j
             End If
 
         Next j
 
-        Cells(i, 11).Value = max
-        Cells(i, 12).Value = j_max
+        Cells(i + 1, 12).Value = max
+        Cells(i + 1, 13).Value = j_max
 
-        Cells(i, j_max).Interior.Color = vbYellow
+        Cells(i + 1, j_max + 1).Interior.Color = vbYellow
 
     Next i
+
+    Range("A1:M11").Borders.LineStyle = xlContinuous
 
 End Sub
